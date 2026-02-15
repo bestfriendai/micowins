@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicoWins - Track micro-wins and celebrate daily progress</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --surface: #ffffff;
+            --text: #1a1a1a;
+            --text-secondary: #666666;
+            --accent: #F59E0B;
+            --accent-dark: #D97706;
+            --border: #e5e5e5;
+        }
+        [data-theme="dark"] {
+            --bg: #0a0a0a;
+            --surface: #1c1c1e;
+            --text: #ffffff;
+            --text-secondary: #a1a1a1;
+            --accent: #F59E0B;
+            --accent-dark: #D97706;
+            --border: #2c2c2e;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #0a0a0a;
+                --surface: #1c1c1e;
+                --text: #ffffff;
+                --text-secondary: #a1a1a1;
+                --accent: #F59E0B;
+                --accent-dark: #D97706;
+                --border: #2c2c2e;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+        .container { max-width: 800px; margin: 0 auto; padding: 60px 24px; }
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px;
+            width: 44px; height: 44px;
+            border-radius: 50%; border: 1px solid var(--border);
+            background: var(--surface); cursor: pointer;
+            font-size: 20px; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; z-index: 100;
+        }
+        .theme-toggle:hover { transform: scale(1.1); }
+        .header { text-align: center; margin-bottom: 48px; }
+        .logo {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 20px; margin: 0 auto 24px;
+            display: flex; align-items: center; justify-content: center; font-size: 40px;
+        }
+        h1 { font-size: 42px; font-weight: 700; margin-bottom: 12px; letter-spacing: -0.02em; }
+        .tagline { font-size: 20px; color: var(--text-secondary); max-width: 500px; margin: 0 auto; }
+        .hero {
+            background: var(--surface); border-radius: 24px; padding: 48px;
+            margin-bottom: 40px; border: 1px solid var(--border); text-align: center;
+        }
+        .hero h2 { font-size: 28px; margin-bottom: 16px; }
+        .hero p { color: var(--text-secondary); font-size: 18px; max-width: 500px; margin: 0 auto; }
+        .features {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px; margin-bottom: 40px;
+        }
+        .feature {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 28px; transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 24px; margin-bottom: 16px;
+        }
+        .feature h3 { font-size: 18px; margin-bottom: 8px; }
+        .feature p { color: var(--text-secondary); font-size: 14px; }
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white; padding: 16px 32px; border-radius: 12px;
+            font-size: 16px; font-weight: 600; text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+        .footer {
+            text-align: center; padding-top: 40px;
+            border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌓</button>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🏆</div>
+            <h1>MicoWins</h1>
+            <p class="tagline">Track micro-wins and celebrate daily progress</p>
+        </div>
+        <div class="hero">
+            <h2>Small Wins, Big Results</h2>
+            <p>Every big achievement starts with tiny wins. Track them, celebrate them, and watch your confidence compound.</p>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">✅</div>
+                <h3>Micro Wins</h3>
+                <p>Log small daily victories and watch them compound into major achievements.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🔥</div>
+                <h3>Win Streaks</h3>
+                <p>Build momentum with streak tracking that keeps you motivated.</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📊</div>
+                <h3>Progress View</h3>
+                <p>Visualize your wins over time and see how far you've come.</p>
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <a href="#" class="cta">Download on iOS</a>
+        </div>
+        <div class="footer">
+            <p>MicoWins &mdash; Made with &#10084;&#65039;</p>
+        </div>
+    </div>
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : (current === 'light' ? 'dark' : 
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark'));
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            document.querySelector('.theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+        }
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved) {
+                document.documentElement.setAttribute('data-theme', saved);
+                document.querySelector('.theme-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+            } else {
+                document.querySelector('.theme-toggle').textContent = 
+                    window.matchMedia('(prefers-color-scheme: dark)').matches ? '☀️' : '🌙';
+            }
+        })();
+    </script>
+</body>
+</html>
+
